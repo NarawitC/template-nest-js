@@ -12,8 +12,8 @@ export const PostgresDataSourceOptions: DataSourceOptions = {
   synchronize: false,
   migrationsRun: true,
   logging: process.env.NODE_ENV === 'LOCAL',
-  entities: [__dirname + '/../../dist/**/*.sql.entity.js'],
-  migrations: [__dirname + '/../../dist/migrations/*.js'],
+  entities: [__dirname + '/../**/*.sql.entity{.ts,.js}'],
+  migrations: [__dirname + '/../migrations/*{.ts,.js}'],
 }
 const PostgresDataSource = new DataSource(PostgresDataSourceOptions)
 export default PostgresDataSource
