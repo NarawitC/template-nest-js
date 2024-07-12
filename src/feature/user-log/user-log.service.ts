@@ -10,7 +10,7 @@ export class UserLogService {
     private userLogRepository: Repository<UserLog>,
   ) {}
 
-  create(requestBody: any) {
+  async create(requestBody: any) {
     console.log('requestBody', requestBody)
     return this.userLogRepository.save({ requestBody })
   }
