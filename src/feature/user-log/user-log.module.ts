@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common'
 import { UserLogService } from './user-log.service'
 import { UserLogController } from './user-log.controller'
-import { UserLog } from './entities/user-log.mongo.entity'
+import { UserLog } from './entity/user-log.mongo.entity'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { DataBaseName } from '@/enum/database'
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([UserLog], process.env.DATABASE_MONGO_DATA_SOURCE),
-  ],
+  imports: [TypeOrmModule.forFeature([UserLog], DataBaseName.MONGO)],
   controllers: [UserLogController],
   providers: [UserLogService],
 })

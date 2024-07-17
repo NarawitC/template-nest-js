@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { UserModule } from './feature/user/user.module'
+import { CustomerModule } from './feature/customer/customer.module'
 import { ConfigModule } from '@nestjs/config'
 import configuration from '@/config/config-module'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -11,15 +11,15 @@ import { UserLogModule } from './feature/user-log/user-log.module'
 
 @Module({
   imports: [
-    UserModule,
+    TypeOrmModule.forRoot(PostgresDataSourceOptions),
+    TypeOrmModule.forRoot(MongoDataSourceOptions),
+    CustomerModule,
     UserLogModule,
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
       cache: true,
     }),
-    TypeOrmModule.forRoot(PostgresDataSourceOptions),
-    TypeOrmModule.forRoot(MongoDataSourceOptions),
   ],
   controllers: [AppController],
   providers: [AppService],

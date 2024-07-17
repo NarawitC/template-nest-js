@@ -7,13 +7,11 @@ export default () => ({
       userName: process.env.DATABASE_POSTGRES_USERNAME,
       password: process.env.DATABASE_POSTGRES_PASSWORD,
       database: process.env.DATABASE_POSTGRES_DATABASE,
-      name: process.env.DATABASE_POSTGRES_DATA_SOURCE,
     },
     mongo: {
       port: parseInt(process.env.DATABASE_MONGO_PORT) || 27017,
       database: process.env.DATABASE_MONGO_DATABASE,
       url: process.env.DATABASE_MONGO_URL,
-      name: process.env.DATABASE_MONGO_DATA_SOURCE,
     },
   },
 })
