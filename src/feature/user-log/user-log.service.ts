@@ -14,4 +14,8 @@ export class UserLogService {
   async create(requestBody: any) {
     return this.userLogRepository.save({ requestBody })
   }
+
+  async getAll() {
+    return this.userLogRepository.find()
+  }
 }

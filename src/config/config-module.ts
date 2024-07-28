@@ -14,4 +14,5 @@ export default () => ({
       url: process.env.DATABASE_MONGO_URL,
     },
   },
+  jwtSecretKey: process.env.JWT_SECRET_KEY,
 })

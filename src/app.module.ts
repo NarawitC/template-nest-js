@@ -8,6 +8,9 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { PostgresDataSourceOptions } from './data-source/postgres'
 import { MongoDataSourceOptions } from './data-source/mongo'
 import { UserLogModule } from './feature/user-log/user-log.module'
+import { AdminModule } from './feature/admin/admin.module'
+import { AuthenticationModule } from './feature/authentication/authentication.module'
+import { JwtModule } from '@nestjs/jwt'
 
 @Module({
   imports: [
@@ -15,6 +18,13 @@ import { UserLogModule } from './feature/user-log/user-log.module'
     TypeOrmModule.forRoot(MongoDataSourceOptions),
     CustomerModule,
     UserLogModule,
+    AdminModule,
+    AuthenticationModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET_KEY,
+      signOptions: { expiresIn: '1d' },
+      global: true,
+    }),
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
